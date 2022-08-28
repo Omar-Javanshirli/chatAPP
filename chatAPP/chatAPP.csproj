@@ -55,6 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserCantrols\FriendsUc.xaml.cs">
+      <DependentUpon>FriendsUc.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,11 +70,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Book.cs" />
+    <Compile Include="Human.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserCantrols\FriendsUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -96,10 +107,46 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\mario.png" />
+    <Resource Include="Image\omer.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\ball.png" />
+    <Resource Include="Image\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\offer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\anjelina.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\rihanna.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\ester.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\lena.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\paola.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

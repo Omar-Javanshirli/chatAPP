@@ -3,23 +3,264 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:chatAPP" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:chatAPP.UserCantrols"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Height="450" Width="800" WindowStartupLocation="CenterScreen" BorderBrush="White" BorderThickness="10" ResizeMode="NoResize">
+        Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Background="Transparent" AllowsTransparency="True" WindowStyle="None">
+        
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="230"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" CornerRadius="10">
+
+        <Border CornerRadius="0 20 20 0" Background="#F2F6FF" Grid.Column="2" Grid.ColumnSpan="2" Margin="-25 0 0 0 "/>
+
+        <Border CornerRadius="20" Grid.Column="0">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="#AB8BFA" Offset="0"/>
                     <GradientStop Color="#7080D5" Offset="1"/>
                 </LinearGradientBrush>
-            </Border.Background>
-            
+                </Border.Background>
+            <Canvas>
+                <Ellipse Canvas.Left="60" Canvas.Top="20" Width="40" Height="40">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="Image/omer.jpg"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Label
+                    Canvas.Top="60" Canvas.Left="45"
+                    Content="Cavanshirli"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontStyle="Italic"
+                    FontFamily="Georgia">
+                </Label>
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="155">
+                    <Grid Width="97" Height="17">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Background="Transparent">
+                            <Image Source="Image/home.png"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="Home" Background="Transparent" HorizontalAlignment="Center" Foreground="#CCCCCC"
+                                   FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="190">
+                    <Grid Width="97" Height="17">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Background="Transparent">
+                            <Image Source="Image/chat.png"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="Chat" Background="Transparent" HorizontalAlignment="Center" Foreground="#CCCCCC"
+                                   FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="225">
+                    <Grid Width="97" Height="17">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Background="Transparent">
+                            <Image Source="Image/calendar.png"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="Calendar" Background="Transparent" HorizontalAlignment="Center" Foreground="#CCCCCC"
+                                   FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="260">
+                    <Grid Width="97" Height="17">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Background="Transparent">
+                            <Image Source="Image/offer.png"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="Offer" Background="Transparent" HorizontalAlignment="Center" Foreground="#CCCCCC"
+                                   FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="295">
+                    <Grid Width="97" Height="17">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Background="Transparent">
+                            <Image Source="Image/document.png"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="Documents" Background="Transparent" HorizontalAlignment="Center" Foreground="#CCCCCC"
+                                   FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="330">
+                    <Grid Width="97" Height="17">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Background="Transparent">
+                            <Image Source="Image/setting.png"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="Setting" Background="Transparent" HorizontalAlignment="Center" Foreground="#CCCCCC"
+                                   FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+            </Canvas>
         </Border>
+        
+        <Border Grid.Column="1" CornerRadius="20 20 20 20" Background="#F2F6FF" Margin="-25 0 0 0"/>
+        <Canvas Grid.Column="1">
+            <Label Grid.Column="1" Canvas.Left="30" Canvas.Top="20" FontSize="20" FontFamily="Georgia" FontStyle="Italic"
+                   Content="Chat" Foreground="Black"/>
+
+            <Border Canvas.Left="20" Canvas.Top="70" Width="200" Height="20" Background="#FBFCFD" CornerRadius="10 10 10 10 ">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Search" FontSize="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                       FontStyle="Italic" FontFamily="Georgia" Foreground="#CCCCCC" Grid.Column="0"/>
+                    <Button Grid.Column="1" Background="Transparent" BorderThickness="0">
+                        <Image Source="Image/search.png"/>
+                    </Button>
+                </Grid>
+            </Border>
+            
+            <Border Canvas.Left="20" Canvas.Top="110" Width="200" Height="50" Background="#FBFCFD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" FontSize="10" Content="Anjelina" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               FontStyle="Italic" FontFamily="Georgia"/>
+                        <Label Grid.Row="1" FontSize="8" Content="I miss you ♥️" FontStyle="Italic" FontFamily="Georgia"/>
+                    </Grid>
+                    <Ellipse Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Image/anjelina.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </Border>
+
+            <Border  Canvas.Left="20" Canvas.Top="175" Width="200" Height="50"  Background="#FBFCFD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" FontSize="10" Content="Rihanna" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               FontStyle="Italic" FontFamily="Georgia"/>
+                        <Label Grid.Row="1" FontSize="8" Content="don't leave me, please
+                               " FontStyle="Italic" FontFamily="Georgia"/>
+                    </Grid>
+                    <Ellipse Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Image/rihanna.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </Border>
+
+            <Border Canvas.Left="20" Canvas.Top="240" Width="200" Height="50" Background="#FBFCFD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" FontSize="10" Content="Ester" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               FontStyle="Italic" FontFamily="Georgia"/>
+                        <Label Grid.Row="1" FontSize="8" Content="do you have free time tomorrow?"
+                                FontStyle="Italic" FontFamily="Georgia"/>
+                    </Grid>
+                    <Ellipse Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Image/ester.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </Border>
+
+            <Border Canvas.Left="20" Canvas.Top="305" Width="200" Height="50" Background="#FBFCFD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" FontSize="10" Content="Lena Del" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               FontStyle="Italic" FontFamily="Georgia"/>
+                        <Label Grid.Row="1" FontSize="8" Content="yesterday was a very good day for me"
+                                FontStyle="Italic" FontFamily="Georgia"/>
+                    </Grid>
+                    <Ellipse Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Image/lena.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </Border>
+
+            <Border   Canvas.Left="20" Canvas.Top="370" Width="200" Height="50" Background="#FBFCFD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" FontSize="10" Content="Paola" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               FontStyle="Italic" FontFamily="Georgia"/>
+                        <Label Grid.Row="1" FontSize="8" Content="why don't you open my phones?"
+                                FontStyle="Italic" FontFamily="Georgia"/>
+                    </Grid>
+                    <Ellipse Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Image/paola.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </Border>
+        </Canvas>
+        <Canvas Grid.Column="2">
+            
+        </Canvas>
     </Grid>
 </Window>
    
