@@ -156,11 +156,11 @@
                                     </Grid.RowDefinitions>
                                     <Label x:Name="nameLblb" Grid.Row="0" FontSize="10" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                FontStyle="Italic" FontFamily="Georgia"/>
-                                    <Label x:Name="messageLbl" Grid.Row="1" FontSize="8" Content="{Binding Message}" FontStyle="Italic" FontFamily="Georgia"/>
+                                    <Label x:Name="messageLbl" Grid.Row="1" FontSize="8" Content="{Binding Message }" FontStyle="Italic" FontFamily="Georgia"/>
                                 </Grid>
                                 <Ellipse Width="30" Height="30">
                                     <Ellipse.Fill>
-                                        <ImageBrush x:Name="imageBrush"/>
+                                        <ImageBrush x:Name="imageBrush"  ImageSource="{Binding Image}"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </Grid>
@@ -194,7 +194,7 @@
             </Border>
             <Border Canvas.Left="20" Canvas.Top="150" Width="340" Height="295" Background="#FBFCFD" BorderThickness="0"
                     CornerRadius="10">
-                
+
             </Border>
         </Canvas>
     </Grid>

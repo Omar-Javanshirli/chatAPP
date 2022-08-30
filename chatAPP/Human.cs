@@ -27,21 +27,21 @@ namespace chatAPP
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set { name = value;OnPropertyChanged(); }
         }
 
         private string message;
         public string Message
         {
             get { return message; }
-            set { message = value; }
+            set { message = value; OnPropertyChanged(); }
         }
 
         private string image;
         public string Image
         {
             get { return image; }
-            set { image = value; }
+            set { image = value; OnPropertyChanged(); }
         }
 
     }

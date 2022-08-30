@@ -34,6 +34,7 @@ namespace chatAPP
                {
                    Name="Anjelina",
                    Message="I miss you",
+                   Image="/Image/anjelina.jpg"
                },
                new Human
                {
