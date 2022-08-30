@@ -8,7 +8,15 @@
         mc:Ignorable="d"
         Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         Background="Transparent" AllowsTransparency="True" WindowStyle="None">
-        
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="SpecialColor">
+                <GradientStop Color="#9283e2" Offset="0.5"/>
+                <GradientStop Color="#7949E9" Offset="1"/>
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -39,7 +47,7 @@
                     FontStyle="Italic"
                     FontFamily="Georgia">
                 </Label>
-                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="155">
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="155" Canvas.Left="20">
                     <Grid Width="97" Height="17">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -52,7 +60,7 @@
                                    FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
-                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="190">
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="190" Canvas.Left="20">
                     <Grid Width="97" Height="17">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -65,7 +73,7 @@
                                    FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
-                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="225">
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="225" Canvas.Left="20">
                     <Grid Width="97" Height="17">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -78,7 +86,7 @@
                                    FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
-                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="260">
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="260" Canvas.Left="20">
                     <Grid Width="97" Height="17">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -91,7 +99,7 @@
                                    FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
-                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="295">
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="295" Canvas.Left="20">
                     <Grid Width="97" Height="17">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -104,7 +112,7 @@
                                    FontStyle="Italic" FontFamily="Georgia" VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
-                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="330">
+                <StackPanel Width="100" Height="20" Background="Transparent" Canvas.Top="330" Canvas.Left="20">
                     <Grid Width="97" Height="17">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -125,25 +133,27 @@
             <Label Grid.Column="1" Canvas.Left="30" Canvas.Top="20" FontSize="20" FontFamily="Georgia" FontStyle="Italic"
                    Content="Chat" Foreground="Black"/>
 
-            <Border Canvas.Left="20" Canvas.Top="70" Width="200" Height="30" Background="#FBFCFD" CornerRadius="10 10 10 10 ">
+            <Border Canvas.Left="20" Canvas.Top="70" Width="200" Height="30" Background="#FBFCFD" CornerRadius="10 10 10 10 "
+                    MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Search" FontSize="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                       FontStyle="Italic" FontFamily="Georgia" Foreground="#CCCCCC" Grid.Column="0"/>
-                    <Button Grid.Column="1" Background="Transparent" BorderThickness="0">
+                    <Label Name="searchLbl"  FontSize="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                       FontStyle="Italic" FontFamily="Georgia" Foreground="#CCCCCC" Grid.Column="0">Search</Label>
+                    <Button x:Name="searchBtn" Grid.Column="1" Background="Transparent" BorderThickness="0">
                         <Image Source="Image/search.png"/>
                     </Button>
                 </Grid>
             </Border>
 
             <ListBox Canvas.Left="14" Canvas.Top="110" Width="220" Height="340" Background="Transparent"
-                     ItemsSource="{Binding Humans}" BorderThickness="0" >
+                     ItemsSource="{Binding Humans}" BorderThickness="0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border  Width="200" Height="50" Background="#FBFCFD" CornerRadius="10" Margin="0 10">
+                        <Border Width="200" Height="50" Background="#FBFCFD" CornerRadius="10" Margin="0 10" x:Name="chatBorder"
+                                MouseRightButtonDown="chatBorder_MouseRightButtonDown">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
@@ -154,12 +164,12 @@
                                         <RowDefinition Height="25"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Label x:Name="nameLblb" Grid.Row="0" FontSize="10" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               FontStyle="Italic" FontFamily="Georgia"/>
+                                    <Label x:Name="nameLbl" Grid.Row="0" FontSize="10" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                            FontStyle="Italic" FontFamily="Georgia"/>
                                     <Label x:Name="messageLbl" Grid.Row="1" FontSize="8" Content="{Binding Message }" FontStyle="Italic" FontFamily="Georgia"/>
                                 </Grid>
                                 <Ellipse Width="30" Height="30">
-                                    <Ellipse.Fill>
+                                    <Ellipse.Fill >
                                         <ImageBrush x:Name="imageBrush"  ImageSource="{Binding Image}"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
@@ -170,7 +180,7 @@
             </ListBox>
         </Canvas>
         <Canvas Grid.Column="2">
-            <Border Canvas.Left="20" Canvas.Top="70" Width="340" Height="50" CornerRadius="10" Background="#FBFCFD">
+            <Border Canvas.Left="20" Canvas.Top="70" Width="340" Height="50" CornerRadius="10" Background="#FBFCFD" x:Name="friendBorder">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40"/>
@@ -181,20 +191,37 @@
                             <RowDefinition Height="25"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Label FontSize="10" FontStyle="Italic" FontFamily="Georgia" HorizontalAlignment="Left"
+                        <Label x:Name="nameLbl2" FontSize="10" FontStyle="Italic" FontFamily="Georgia" HorizontalAlignment="Left"
                                VerticalAlignment="Bottom"/>
-                        <Label Grid.Row="1" FontSize="8" FontStyle="Italic" FontFamily="Georgia"></Label>
+                        <Label x:Name="messageLbl2" Grid.Row="1" FontSize="8" FontStyle="Italic" FontFamily="Georgia"></Label>
                     </Grid>
                     <Ellipse Width="30" Height="30">
                         <Ellipse.Fill>
-                            <ImageBrush/>
+                            <ImageBrush x:Name="imageBrush2"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Grid>
             </Border>
-            <Border Canvas.Left="20" Canvas.Top="150" Width="340" Height="295" Background="#FBFCFD" BorderThickness="0"
+            <Border Canvas.Left="20" Canvas.Top="150" Width="340" Height="295" Background="#FBFCFE" BorderThickness="0"
                     CornerRadius="10">
-
+                <Canvas>
+                    <Border Margin="5" Padding="5" Background="white" CornerRadius="10" Canvas.Bottom="15" Canvas.Left="20" Panel.ZIndex="10">
+                        <Canvas Width="270" Height="50">
+                            <Button Width="30" Height="30" Background="Transparent" Canvas.Left="10" Canvas.Top="10" BorderThickness="0">
+                                <Image Source="Image/record.png"/>
+                            </Button>
+                            <TextBlock Canvas.Left="60" Canvas.Top="15" Margin="5" Width="150" Height="30"
+                                       Text="Type Something" FontSize="10"
+                                       FontFamily="Georgia"
+                                       FontStyle="Italic"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                            <Image Canvas.Right="20" Canvas.Top="15" Source="Image/send.png" />
+                            
+                        </Canvas>
+                    </Border>
+                    
+                </Canvas>
             </Border>
         </Canvas>
     </Grid>

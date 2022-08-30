@@ -113,9 +113,6 @@
     <Resource Include="Image\home.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="chat.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\chat.png" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +144,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\paola.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\send.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
