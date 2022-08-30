@@ -125,7 +125,7 @@
             <Label Grid.Column="1" Canvas.Left="30" Canvas.Top="20" FontSize="20" FontFamily="Georgia" FontStyle="Italic"
                    Content="Chat" Foreground="Black"/>
 
-            <Border Canvas.Left="20" Canvas.Top="70" Width="200" Height="20" Background="#FBFCFD" CornerRadius="10 10 10 10 ">
+            <Border Canvas.Left="20" Canvas.Top="70" Width="200" Height="30" Background="#FBFCFD" CornerRadius="10 10 10 10 ">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -154,13 +154,13 @@
                                         <RowDefinition Height="25"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" FontSize="10" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                    <Label x:Name="nameLblb" Grid.Row="0" FontSize="10" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                FontStyle="Italic" FontFamily="Georgia"/>
-                                    <Label Grid.Row="1" FontSize="8" Content="{Binding Message}" FontStyle="Italic" FontFamily="Georgia"/>
+                                    <Label x:Name="messageLbl" Grid.Row="1" FontSize="8" Content="{Binding Message}" FontStyle="Italic" FontFamily="Georgia"/>
                                 </Grid>
                                 <Ellipse Width="30" Height="30">
                                     <Ellipse.Fill>
-                                        <ImageBrush/>
+                                        <ImageBrush x:Name="imageBrush"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </Grid>
@@ -168,6 +168,34 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+        </Canvas>
+        <Canvas Grid.Column="2">
+            <Border Canvas.Left="20" Canvas.Top="70" Width="340" Height="50" CornerRadius="10" Background="#FBFCFD">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label FontSize="10" FontStyle="Italic" FontFamily="Georgia" HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"/>
+                        <Label Grid.Row="1" FontSize="8" FontStyle="Italic" FontFamily="Georgia"></Label>
+                    </Grid>
+                    <Ellipse Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <ImageBrush/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </Border>
+            <Border Canvas.Left="20" Canvas.Top="150" Width="340" Height="295" Background="#FBFCFD" BorderThickness="0"
+                    CornerRadius="10">
+                
+            </Border>
         </Canvas>
     </Grid>
 </Window>
