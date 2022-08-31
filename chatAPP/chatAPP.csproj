@@ -149,9 +149,6 @@
     <Resource Include="Image\record.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="send.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\send.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

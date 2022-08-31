@@ -32,7 +32,7 @@
                     <GradientStop Color="#AB8BFA" Offset="0"/>
                     <GradientStop Color="#7080D5" Offset="1"/>
                 </LinearGradientBrush>
-                </Border.Background>
+            </Border.Background>
             <Canvas>
                 <Ellipse Canvas.Left="60" Canvas.Top="20" Width="40" Height="40">
                     <Ellipse.Fill>
@@ -127,7 +127,7 @@
                 </StackPanel>
             </Canvas>
         </Border>
-        
+
         <Border Grid.Column="1" CornerRadius="20 20 20 20" Background="#F2F6FF" Margin="-25 0 0 0"/>
         <Canvas Grid.Column="1">
             <Label Grid.Column="1" Canvas.Left="30" Canvas.Top="20" FontSize="20" FontFamily="Georgia" FontStyle="Italic"
@@ -169,6 +169,11 @@
                                     <Label x:Name="messageLbl" Grid.Row="1" FontSize="8" Content="{Binding Message }" FontStyle="Italic" FontFamily="Georgia"/>
                                 </Grid>
                                 <Ellipse Width="30" Height="30">
+                                    <Ellipse.Stroke >
+                                        <ImageBrush x:Name="imageBrush2"  ImageSource="{Binding Image}"/>
+                                    </Ellipse.Stroke>
+                                </Ellipse>
+                                <Ellipse Width="25" Height="25">
                                     <Ellipse.Fill >
                                         <ImageBrush x:Name="imageBrush"  ImageSource="{Binding Image}"/>
                                     </Ellipse.Fill>
@@ -197,7 +202,7 @@
                     </Grid>
                     <Ellipse Width="30" Height="30">
                         <Ellipse.Fill>
-                            <ImageBrush x:Name="imageBrush2"/>
+                            <ImageBrush x:Name="imageBrush3"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Grid>
@@ -215,15 +220,32 @@
                                        FontFamily="Georgia"
                                        FontStyle="Italic"
                                        HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center"/> 
                             <Image Canvas.Right="20" Canvas.Top="15" Source="Image/send.png" />
-                            
                         </Canvas>
                     </Border>
-                    
+                    <Canvas Width="339" Height="210">
+                        <Border x:Name="messageBorder" Grid.Row="0" Background="{StaticResource SpecialColor}" 
+                                Width="{Binding ElementName=messageTextBox, Path=Width}" Height="30"
+                                CornerRadius="20"
+                                Canvas.Left="10" Canvas.Top="10" Margin="5" Padding="5">
+                            <Canvas>
+                                <TextBlock Canvas.Left="10"
+                                    Width="70"
+                                    FontSize="15"
+                                    FontStyle="Italic"
+                                    FontFamily="Georgia"
+                                    Text="salam "
+                                    Foreground="#CCCCCC" 
+                                    x:Name="messageTextBox">
+                                </TextBlock>
+                            </Canvas>
+                        </Border>
+                    </Canvas>
                 </Canvas>
             </Border>
         </Canvas>
+        
     </Grid>
 </Window>
    

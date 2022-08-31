@@ -90,7 +90,10 @@ namespace chatAPP
                             if (l.Name.ToString() == "nameLbl")
                                 nameLbl2.Content = l.Content;
                             else if (l.Name.ToString() == "messageLbl")
+                            {
                                 messageLbl2.Content = l.Content;
+                                
+                            }
                         }
                     }
                 }
@@ -99,6 +102,8 @@ namespace chatAPP
                     
                 }
             }
+
+
         }
     }
 }
