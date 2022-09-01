@@ -27,7 +27,7 @@ namespace chatAPP
         {
             InitializeComponent();
             this.DataContext = this;
-            GrandientColor=messageBorder.Background;
+            GrandientColor = messageBorder.Background;
             Humans = new ObservableCollection<Human>
             {
                new Human
@@ -77,15 +77,12 @@ namespace chatAPP
                 searchLbl.Content = "Search";
             }
         }
-        
-        
+
+
         private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var resultBorder = sender as Border;
             var grid = resultBorder.Child as Grid;
-
-            if (messageTextBox.Text.ToString() != String.Empty)
-                messageBorder.Background = GrandientColor;
 
             foreach (var item in grid.Children)
             {
@@ -101,6 +98,7 @@ namespace chatAPP
                             {
                                 messageLbl2.Content = l.Content;
                                 messageTextBox.Text = l.Content.ToString();
+                                messageBorder.Background = GrandientColor;
                             }
                         }
                     }
@@ -125,6 +123,43 @@ namespace chatAPP
                     }
                 }
             }
+        }
+
+
+        private void rightMessageTextBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (rightMessageTextBox.Text.ToString() == "Type Something")
+                rightMessageTextBox.Text = String.Empty;
+        }
+
+        private void rightMessageTextBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (rightMessageTextBox.Text.ToString() == String.Empty)
+                rightMessageTextBox.Text = "Type Something";
+        }
+
+        int count = 20;
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Border newBorder=new Border();
+            Canvas newCanvas = new Canvas();
+            TextBlock newTextBlock=new TextBlock();
+
+            newTextBlock.FontSize = 15;
+            newTextBlock.FontFamily = messageTextBox.FontFamily;
+            newTextBlock.FontStyle=messageTextBox.FontStyle;
+            newTextBlock.Foreground=messageTextBox.Foreground;
+            newTextBlock.Text = rightMessageTextBox.Text;
+
+            newBorder.Name = "newBorder";
+            newBorder.Background= GrandientColor;
+            newBorder.Width = rightMessageTextBox.Text.Length * 9;
+            newBorder.Height = 30;
+            newBorder.CornerRadius = messageBorder.CornerRadius;
+
+            newBorder.Child = newCanvas;
+            newCanvas.Children.Add(newTextBlock);
+            chatingCanvas.Children.Add(newBorder);
         }
     }
 }
