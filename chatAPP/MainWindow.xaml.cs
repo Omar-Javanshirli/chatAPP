@@ -22,12 +22,12 @@ namespace chatAPP
     public partial class MainWindow : Window
     {
         public ObservableCollection<Human> Humans { get; set; }
-
+        public dynamic GrandientColor { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = this;
-
+            GrandientColor=messageBorder.Background;
             Humans = new ObservableCollection<Human>
             {
                new Human
@@ -55,6 +55,10 @@ namespace chatAPP
                    Image="Image/lena.jpg"
                }
             };
+            if (messageTextBox.Text.ToString() == String.Empty)
+            {
+                messageBorder.Background = null;
+            }
         }
 
         private void Border_MouseEnter(object sender, MouseEventArgs e)
@@ -73,11 +77,15 @@ namespace chatAPP
                 searchLbl.Content = "Search";
             }
         }
-
-        private void chatBorder_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        
+        
+        private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var resultBorder = sender as Border;
             var grid = resultBorder.Child as Grid;
+
+            if (messageTextBox.Text.ToString() != String.Empty)
+                messageBorder.Background = GrandientColor;
 
             foreach (var item in grid.Children)
             {
@@ -92,18 +100,31 @@ namespace chatAPP
                             else if (l.Name.ToString() == "messageLbl")
                             {
                                 messageLbl2.Content = l.Content;
-                                
+                                messageTextBox.Text = l.Content.ToString();
                             }
                         }
                     }
                 }
                 else if (item is Ellipse el)
                 {
-                    
+
                 }
             }
 
-
+            foreach (var item in chatingCanvas.Children)
+            {
+                if (item is Border b)
+                {
+                    var childCanvas = b.Child as Canvas;
+                    foreach (var item2 in childCanvas.Children)
+                    {
+                        if (item2 is TextBlock tb)
+                        {
+                            tb.Width = tb.Text.Length * 9;
+                        }
+                    }
+                }
+            }
         }
     }
 }
