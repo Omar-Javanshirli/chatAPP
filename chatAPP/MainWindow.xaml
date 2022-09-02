@@ -149,7 +149,7 @@
             </Border>
 
             <ListBox Canvas.Left="14" Canvas.Top="110" Width="220" Height="340" Background="Transparent"
-                     ItemsSource="{Binding Humans}" BorderThickness="0">
+                     ItemsSource="{Binding Humans}" BorderThickness="0" SelectedItem="{Binding SelectedHuman}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Width="200" Height="50" Background="#FBFCFD" CornerRadius="10" Margin="0 10" x:Name="chatBorder"
@@ -173,7 +173,7 @@
                                         <ImageBrush x:Name="imageBrush2"  ImageSource="{Binding Image}"/>
                                     </Ellipse.Stroke>
                                 </Ellipse>
-                                <Ellipse Width="25" Height="25">
+                                <Ellipse Width="25" Height="25" x:Name="ellipse">
                                     <Ellipse.Fill >
                                         <ImageBrush x:Name="imageBrush"  ImageSource="{Binding Image}"/>
                                     </Ellipse.Fill>
@@ -202,7 +202,7 @@
                     </Grid>
                     <Ellipse Width="30" Height="30">
                         <Ellipse.Fill>
-                            <ImageBrush x:Name="imageBrush3"/>
+                            <ImageBrush x:Name="imageBrush3" ImageSource="{Binding SelectedHuman.Image}"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Grid>
@@ -228,22 +228,28 @@
                             <Image Canvas.Right="20" Canvas.Top="15" Source="Image/send.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
                         </Canvas>
                     </Border>
-                    <Canvas Width="339" Height="210" x:Name="chatingCanvas">
-                        <Border x:Name="messageBorder" Grid.Row="0" Background="{StaticResource SpecialColor}" 
-                                Width="{Binding ElementName=messageTextBox, Path=Width}" Height="30"
+                    <StackPanel Width="339" Height="210" x:Name="chatingCanvas">
+                        <Border HorizontalAlignment="Right" x:Name="messageBorder" Grid.Row="0" Background="{StaticResource SpecialColor}" 
+                                Width="{Binding ElementName=messageTextBox, Path=Width}"
+                                Height="{Binding MyHeight}"
                                 CornerRadius="20"
                                 Canvas.Left="10" Canvas.Top="10" Margin="5" Padding="5">
                             <Canvas>
-                                <TextBlock Canvas.Left="10"
+                                <TextBlock TextWrapping="Wrap" Canvas.Left="10"
+                                           Padding="8"
+                               
+                                    Width="200"
+                                    Text="{Binding MyText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                     FontSize="15"
                                     FontStyle="Italic"
                                     FontFamily="Georgia"
                                     Foreground="#CCCCCC" 
+                                 
                                     x:Name="messageTextBox">
                                 </TextBlock>
                             </Canvas>
                         </Border>
-                    </Canvas>
+                    </StackPanel>
                 </Canvas>
             </Border>
         </Canvas>

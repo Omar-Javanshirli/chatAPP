@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +21,17 @@ namespace chatAPP
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,INotifyPropertyChanged
     {
         public ObservableCollection<Human> Humans { get; set; }
+        private Human selectedItem;
+
+        public Human SelectedHuman
+        {
+            get { return selectedItem; }
+            set { selectedItem = value;  OnPropertyChanged(); }
+        }
+
         public dynamic GrandientColor { get; set; }
         public MainWindow()
         {
@@ -81,6 +91,8 @@ namespace chatAPP
 
         private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
+       
             var resultBorder = sender as Border;
             var grid = resultBorder.Child as Grid;
 
@@ -105,24 +117,24 @@ namespace chatAPP
                 }
                 else if (item is Ellipse el)
                 {
-
+                    
                 }
             }
 
-            foreach (var item in chatingCanvas.Children)
-            {
-                if (item is Border b)
-                {
-                    var childCanvas = b.Child as Canvas;
-                    foreach (var item2 in childCanvas.Children)
-                    {
-                        if (item2 is TextBlock tb)
-                        {
-                            tb.Width = tb.Text.Length * 9;
-                        }
-                    }
-                }
-            }
+            //foreach (var item in chatingCanvas.Children)
+            //{
+            //    if (item is Border b)
+            //    {
+            //        var childCanvas = b.Child as Canvas;
+            //        foreach (var item2 in childCanvas.Children)
+            //        {
+            //            if (item2 is TextBlock tb)
+            //            {
+            //                tb.Width = tb.Text.Length * 9;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
 
@@ -139,6 +151,17 @@ namespace chatAPP
         }
 
         int count = 20;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Border newBorder=new Border();
@@ -158,8 +181,26 @@ namespace chatAPP
             newBorder.CornerRadius = messageBorder.CornerRadius;
 
             newBorder.Child = newCanvas;
+            newBorder.HorizontalAlignment = HorizontalAlignment.Right;
+            
             newCanvas.Children.Add(newTextBlock);
             chatingCanvas.Children.Add(newBorder);
+            
         }
+        private int myHeight;
+
+        public int MyHeight
+        {
+            get { return myHeight; }
+            set { myHeight = value;OnPropertyChanged(); }
+        }
+        private string myText;
+
+        public string MyText
+        {
+            get { return myText; }
+            set { myText = value; OnPropertyChanged(); MyHeight = MyText.Length +20; }
+        }
+       
     }
 }
