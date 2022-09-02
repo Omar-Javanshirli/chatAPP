@@ -4,19 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:chatAPP.UserCantrols"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+
         mc:Ignorable="d"
         Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         Background="Transparent" AllowsTransparency="True" WindowStyle="None">
 
-    <Window.Resources>
-        <ResourceDictionary>
-            <LinearGradientBrush x:Key="SpecialColor">
-                <GradientStop Color="#9283e2" Offset="0.5"/>
-                <GradientStop Color="#7949E9" Offset="1"/>
-            </LinearGradientBrush>
-        </ResourceDictionary>
-    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -149,11 +142,11 @@
             </Border>
 
             <ListBox Canvas.Left="14" Canvas.Top="110" Width="220" Height="340" Background="Transparent"
-                     ItemsSource="{Binding Humans}" BorderThickness="0" SelectedItem="{Binding SelectedHuman}" >
+                     ItemsSource="{Binding Humans}" BorderThickness="0" SelectedItem="{Binding SelectedItem}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Width="200" Height="50" Background="#FBFCFD" CornerRadius="10" Margin="0 10" x:Name="chatBorder"
-                                MouseLeftButtonDown="chatBorder_MouseLeftButtonDown">
+                              MouseLeftButtonDown="chatBorder_MouseLeftButtonDown">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
@@ -164,7 +157,7 @@
                                         <RowDefinition Height="25"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Label x:Name="nameLbl" Grid.Row="0" FontSize="10" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                    <Label x:Name="namelbl" Grid.Row="0" FontSize="10" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                             FontStyle="Italic" FontFamily="Georgia"/>
                                     <Label x:Name="messageLbl" Grid.Row="1" FontSize="8" Content="{Binding Message }" FontStyle="Italic" FontFamily="Georgia"/>
                                 </Grid>
@@ -197,12 +190,13 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Label x:Name="nameLbl2" FontSize="10" FontStyle="Italic" FontFamily="Georgia" HorizontalAlignment="Left"
-                               VerticalAlignment="Bottom"/>
-                        <Label x:Name="messageLbl2" Grid.Row="1" FontSize="8" FontStyle="Italic" FontFamily="Georgia"></Label>
+                               VerticalAlignment="Bottom" Content="{Binding SelectedItem.Name}"/>
+                        <Label x:Name="messageLbl2" Grid.Row="1" FontSize="8" FontStyle="Italic" FontFamily="Georgia"
+                               Content="{Binding SelectedItem.Message}"></Label>
                     </Grid>
                     <Ellipse Width="30" Height="30">
                         <Ellipse.Fill>
-                            <ImageBrush x:Name="imageBrush3" ImageSource="{Binding SelectedHuman.Image}"/>
+                            <ImageBrush x:Name="imageBrush3" ImageSource="{Binding SelectedItem.Image}"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Grid>
@@ -215,8 +209,8 @@
                             <Button Width="30" Height="30" Background="Transparent" Canvas.Left="10" Canvas.Top="10" BorderThickness="0">
                                 <Image Source="Image/record.png"/>
                             </Button>
-                            <TextBox Canvas.Left="60" Canvas.Top="15" Margin="5" Width="150" Height="30"
-                                       Text="Type Something" FontSize="12"
+                            <TextBox Canvas.Left="60" Canvas.Top="15" Margin="5" Width="150" Height="30" FontSize="12"
+                                       Text="Type Something"
                                        FontFamily="Georgia"
                                        FontStyle="Italic"
                                        HorizontalAlignment="Center"
@@ -224,36 +218,16 @@
                                        MouseEnter="rightMessageTextBox_MouseEnter"
                                        MouseLeave="rightMessageTextBox_MouseLeave"
                                        Name="rightMessageTextBox"
-                                       BorderThickness="0"/> 
+                                       BorderThickness="0"/>
                             <Image Canvas.Right="20" Canvas.Top="15" Source="Image/send.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
                         </Canvas>
                     </Border>
-                    <StackPanel Width="339" Height="210" x:Name="chatingCanvas">
-                        <Border HorizontalAlignment="Right" x:Name="messageBorder" Grid.Row="0" Background="{StaticResource SpecialColor}" 
-                                Width="{Binding ElementName=messageTextBox, Path=Width}"
-                                Height="{Binding MyHeight}"
-                                CornerRadius="20"
-                                Canvas.Left="10" Canvas.Top="10" Margin="5" Padding="5">
-                            <Canvas>
-                                <TextBlock TextWrapping="Wrap" Canvas.Left="10"
-                                           Padding="8"
-                               
-                                    Width="200"
-                                    Text="{Binding MyText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                    FontSize="15"
-                                    FontStyle="Italic"
-                                    FontFamily="Georgia"
-                                    Foreground="#CCCCCC" 
-                                 
-                                    x:Name="messageTextBox">
-                                </TextBlock>
-                            </Canvas>
-                        </Border>
+                    <StackPanel Width="339" Height="210" x:Name="chatingStackPanel" Margin="15">
+                        <local:WriteMessageUc x:Name="chatingUc"/>
                     </StackPanel>
                 </Canvas>
             </Border>
         </Canvas>
-        
     </Grid>
 </Window>
    

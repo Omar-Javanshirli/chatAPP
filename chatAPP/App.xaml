@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:chatAPP"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="SpecialColor">
+                <GradientStop Color="#9283e2" Offset="0.5"/>
+                <GradientStop Color="#7949E9" Offset="1"/>
+            </LinearGradientBrush>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

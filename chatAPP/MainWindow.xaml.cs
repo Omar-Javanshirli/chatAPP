@@ -1,4 +1,5 @@
-﻿using System;
+﻿using chatAPP.UserCantrols;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -24,20 +25,31 @@ namespace chatAPP
     public partial class MainWindow : Window,INotifyPropertyChanged
     {
         public ObservableCollection<Human> Humans { get; set; }
-        private Human selectedItem;
 
-        public Human SelectedHuman
+        private Human selectedItem;
+        public Human SelectedItem
         {
             get { return selectedItem; }
             set { selectedItem = value;  OnPropertyChanged(); }
         }
 
-        public dynamic GrandientColor { get; set; }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+
             this.DataContext = this;
-            GrandientColor = messageBorder.Background;
             Humans = new ObservableCollection<Human>
             {
                new Human
@@ -65,10 +77,6 @@ namespace chatAPP
                    Image="Image/lena.jpg"
                }
             };
-            if (messageTextBox.Text.ToString() == String.Empty)
-            {
-                messageBorder.Background = null;
-            }
         }
 
         private void Border_MouseEnter(object sender, MouseEventArgs e)
@@ -89,55 +97,6 @@ namespace chatAPP
         }
 
 
-        private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-       
-            var resultBorder = sender as Border;
-            var grid = resultBorder.Child as Grid;
-
-            foreach (var item in grid.Children)
-            {
-                if (item is Grid grid2)
-                {
-                    foreach (var item2 in grid2.Children)
-                    {
-                        if (item2 is Label l)
-                        {
-                            if (l.Name.ToString() == "nameLbl")
-                                nameLbl2.Content = l.Content;
-                            else if (l.Name.ToString() == "messageLbl")
-                            {
-                                messageLbl2.Content = l.Content;
-                                messageTextBox.Text = l.Content.ToString();
-                                messageBorder.Background = GrandientColor;
-                            }
-                        }
-                    }
-                }
-                else if (item is Ellipse el)
-                {
-                    
-                }
-            }
-
-            //foreach (var item in chatingCanvas.Children)
-            //{
-            //    if (item is Border b)
-            //    {
-            //        var childCanvas = b.Child as Canvas;
-            //        foreach (var item2 in childCanvas.Children)
-            //        {
-            //            if (item2 is TextBlock tb)
-            //            {
-            //                tb.Width = tb.Text.Length * 9;
-            //            }
-            //        }
-            //    }
-            //}
-        }
-
-
         private void rightMessageTextBox_MouseEnter(object sender, MouseEventArgs e)
         {
             if (rightMessageTextBox.Text.ToString() == "Type Something")
@@ -150,57 +109,35 @@ namespace chatAPP
                 rightMessageTextBox.Text = "Type Something";
         }
 
-        int count = 20;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
+            var messageSender = new WriteMessageUc();
+            messageSender.messageTextBox.Text = rightMessageTextBox.Text.ToString();
+            chatingStackPanel.Children.Add(messageSender);
+        }
+
+        private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var resultBorder = sender as Border;
+            var grid = resultBorder.Child as Grid;
+
+            foreach (var item in grid.Children)
             {
-                handler(this, new PropertyChangedEventArgs(name));
+                if (item is Grid grid2)
+                {
+                    foreach (var item2 in grid2.Children)
+                    {
+                        if (item2 is Label l)
+                        {
+                            if (l.Name.ToString() == "messageLbl")
+                            {
+                                 chatingUc.messageTextBox.Text=l.Content.ToString();
+                            }
+                        }
+                    }
+                }
             }
         }
 
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Border newBorder=new Border();
-            Canvas newCanvas = new Canvas();
-            TextBlock newTextBlock=new TextBlock();
-
-            newTextBlock.FontSize = 15;
-            newTextBlock.FontFamily = messageTextBox.FontFamily;
-            newTextBlock.FontStyle=messageTextBox.FontStyle;
-            newTextBlock.Foreground=messageTextBox.Foreground;
-            newTextBlock.Text = rightMessageTextBox.Text;
-
-            newBorder.Name = "newBorder";
-            newBorder.Background= GrandientColor;
-            newBorder.Width = rightMessageTextBox.Text.Length * 9;
-            newBorder.Height = 30;
-            newBorder.CornerRadius = messageBorder.CornerRadius;
-
-            newBorder.Child = newCanvas;
-            newBorder.HorizontalAlignment = HorizontalAlignment.Right;
-            
-            newCanvas.Children.Add(newTextBlock);
-            chatingCanvas.Children.Add(newBorder);
-            
-        }
-        private int myHeight;
-
-        public int MyHeight
-        {
-            get { return myHeight; }
-            set { myHeight = value;OnPropertyChanged(); }
-        }
-        private string myText;
-
-        public string MyText
-        {
-            get { return myText; }
-            set { myText = value; OnPropertyChanged(); MyHeight = MyText.Length +20; }
-        }
-       
     }
 }

@@ -55,8 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserCantrols\FriendsUc.xaml.cs">
-      <DependentUpon>FriendsUc.xaml</DependentUpon>
+    <Compile Include="UserCantrols\WriteMessageUc.xaml.cs">
+      <DependentUpon>WriteMessageUc.xaml</DependentUpon>
     </Compile>
     <Page Include="Dictionary1.xaml">
       <SubType>Designer</SubType>
@@ -75,7 +75,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserCantrols\FriendsUc.xaml">
+    <Page Include="UserCantrols\WriteMessageUc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
