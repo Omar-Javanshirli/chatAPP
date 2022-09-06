@@ -113,11 +113,15 @@ namespace chatAPP
         {
             var messageSender = new WriteMessageUc();
             messageSender.messageTextBox.Text = rightMessageTextBox.Text.ToString();
+            messageSender.MyHeight = 30;
             chatingStackPanel.Children.Add(messageSender);
+
+
         }
 
         private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
             var resultBorder = sender as Border;
             var grid = resultBorder.Child as Grid;
 
@@ -131,7 +135,7 @@ namespace chatAPP
                         {
                             if (l.Name.ToString() == "messageLbl")
                             {
-                                 chatingUc.messageTextBox.Text=l.Content.ToString();
+                               chatingUc.messageTextBox.Text=l.Content.ToString();
                             }
                         }
                     }

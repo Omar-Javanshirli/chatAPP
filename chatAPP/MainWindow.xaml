@@ -222,9 +222,11 @@
                             <Image Canvas.Right="20" Canvas.Top="15" Source="Image/send.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
                         </Canvas>
                     </Border>
-                    <StackPanel Width="339" Height="210" x:Name="chatingStackPanel" Margin="15">
-                        <local:WriteMessageUc x:Name="chatingUc"/>
-                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical"  Width="339" Height="210" x:Name="chatingStackPanel" Margin="15">
+                            <local:WriteMessageUc  x:Name="chatingUc"/>
+
+                        </StackPanel>
                 </Canvas>
             </Border>
         </Canvas>
