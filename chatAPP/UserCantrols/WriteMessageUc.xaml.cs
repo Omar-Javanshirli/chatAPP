@@ -48,15 +48,6 @@ namespace chatAPP.UserCantrols
             set { myText = value; OnPropertyChanged(); MyHeight = MyText.Length + 20; }
         }
 
-        private string myText2;
-
-        public string Mytext2
-        {
-            get { return myText2; }
-            set { myText2 = value; OnPropertyChanged(); }
-        }
-
-
 
         public WriteMessageUc()
         {

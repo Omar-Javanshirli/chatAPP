@@ -44,5 +44,13 @@ namespace chatAPP
             set { image = value; OnPropertyChanged(); }
         }
 
+        private List<String> messages;
+
+        public List<String> Messages
+        {
+            get { return messages; }
+            set { messages = value; OnPropertyChanged(); }
+        }
+
     }
 }

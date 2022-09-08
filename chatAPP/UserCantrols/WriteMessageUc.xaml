@@ -12,7 +12,8 @@
             CornerRadius="20"
             HorizontalAlignment="Left"
             Height="{Binding MyHeight}"
-            Width="{Binding ElementName=messageTextBox,Path=Width}">
+            Width="{Binding ElementName=messageTextBox,Path=Width}"
+            Margin="0 10">
 
             <Canvas>
                 <TextBlock

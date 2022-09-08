@@ -109,18 +109,36 @@ namespace chatAPP
                 rightMessageTextBox.Text = "Type Something";
         }
 
+        bool isCheck = false;
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var messageSender = new WriteMessageUc();
-            messageSender.messageTextBox.Text = rightMessageTextBox.Text.ToString();
-            messageSender.MyHeight = 30;
-            chatingStackPanel.Children.Add(messageSender);
+            if (isCheck == false)
+            {
+                var messageSender = new WriteMessageUc();
+                messageSender.MyText = rightMessageTextBox.Text.ToString();
+                messageSender.HorizontalAlignment = HorizontalAlignment.Right;
+                messageSender.MyHeight = 30;
+                chatingStackPanel.Children.Add(messageSender);
+                rightMessageTextBox.Text = String.Empty;
+                isCheck = true;
+            }
 
+            else
+            {
+                var messageSender = new WriteMessageUc();
+                messageSender.HorizontalAlignment = HorizontalAlignment.Left;
+                messageSender.MyText = rightMessageTextBox.Text.ToString();
+                messageSender.MyHeight = 30;
+                chatingStackPanel.Children.Add(messageSender);
+                rightMessageTextBox.Text = String.Empty;
+                isCheck=false;
+            }
 
         }
 
         private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
 
             var resultBorder = sender as Border;
             var grid = resultBorder.Child as Grid;

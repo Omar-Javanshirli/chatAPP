@@ -223,7 +223,7 @@
                         </Canvas>
                     </Border>
 
-                    <StackPanel Orientation="Vertical"  Width="339" Height="210" x:Name="chatingStackPanel" Margin="15">
+                    <StackPanel Orientation="Vertical"  Width="339" Height="210" x:Name="chatingStackPanel" Margin="15" >
                             <local:WriteMessageUc  x:Name="chatingUc"/>
 
                         </StackPanel>
