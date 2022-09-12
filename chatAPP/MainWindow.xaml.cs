@@ -139,7 +139,6 @@ namespace chatAPP
         private void chatBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
-
             var resultBorder = sender as Border;
             var grid = resultBorder.Child as Grid;
 
@@ -153,6 +152,8 @@ namespace chatAPP
                         {
                             if (l.Name.ToString() == "messageLbl")
                             {
+                               chatingStackPanel.Children.Clear();
+                                chatingStackPanel.Children.Add(chatingUc);
                                chatingUc.messageTextBox.Text=l.Content.ToString();
                             }
                         }
